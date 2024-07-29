@@ -6,9 +6,7 @@ phases:
       java: corretto11
     commands:
       - echo Installing Maven
-      - curl -sL https://apache.osuosl.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz | tar -xz
-      - export MAVEN_HOME=$PWD/apache-maven-3.6.3
-      - export PATH=$MAVEN_HOME/bin:$PATH
+      - yum install -y maven
   pre_build:
     commands:
       - echo Running Maven clean
