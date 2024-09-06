@@ -6,8 +6,8 @@ phases:
       java: corretto17
     commands:
       - echo Instalando Maven...
-      - apt-get update -y
-      - apt-get install -y maven
+      - yum update -y
+      - yum install -y maven
 
   pre_build:
     commands:
