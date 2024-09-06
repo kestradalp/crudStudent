@@ -3,25 +3,32 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto11
+      java: corretto17
     commands:
-      - echo Installing Maven
-      - yum install -y maven
+      - echo Instalando Maven...
+      - apt-get update -y
+      - apt-get install -y maven
+
   pre_build:
     commands:
-      - echo Running Maven clean
+      - echo Iniciando fase pre-build...
       - mvn clean
+
   build:
     commands:
-      - echo Building the Java project using Maven
-      - mvn package
+      - echo Iniciando fase de build...
+      - mvn package -DskipTests
+
   post_build:
     commands:
-      - echo Build completed successfully
+      - echo Iniciando fase post-build...
+      - echo Empaquetado completado con éxito el `date`
+      - mv target/*.jar app.jar
 
 artifacts:
   files:
-    - target/*.jar
+    - app.jar
+  name: spring-boot-app-$(date +%Y-%m-%d)
 
 cache:
   paths:
